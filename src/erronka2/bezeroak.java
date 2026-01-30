@@ -9,6 +9,10 @@ public class bezeroak {
 	private String pasahitza;
 	private String email;
 	
+	public bezeroak(int id) {
+		this.id = id;
+	}
+	
 	public bezeroak(int id, String izena, String abizena, String rola, String pasahitza, String email) {
 		this.id = id;
 		this.izena = izena;
@@ -65,5 +69,8 @@ public class bezeroak {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
+	public String toString() {
+		return String.valueOf(id);
+	}
 }

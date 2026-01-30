@@ -7,14 +7,20 @@ public class produktuak {
 	private double prezioa;
 	private int stock;
 	private String egoera;
+	private String konponketa;
 	private String mota;
 	
-	public produktuak(int id, String izena, double prezioa, int stock, String egoera, String mota) {
+	public produktuak(int id) {
+		this.id = id;
+	}
+	
+	public produktuak(int id, String izena, double prezioa, int stock, String egoera, String konponketa, String mota) {
 		this.id = id;
 		this.izena = izena;
 		this.prezioa = prezioa;
 		this.stock = stock;
 		this.egoera = egoera;
+		this.konponketa = konponketa;
 		this.mota = mota;
 	}
 	
@@ -58,12 +64,24 @@ public class produktuak {
 		this.egoera = egoera;
 	}
 	
+	public String getKonponketa() {
+		return konponketa;
+	}
+	
+	public void setKonponketa(String konponketa) {
+		this.konponketa = konponketa;
+	}
+	
 	public String getMota() {
 		return mota;
 	}
 	
 	public void setMota(String mota) {
 		this.mota = mota;
+	}
+	
+	public String toString() {
+		return String.valueOf(id);
 	}
 
 }

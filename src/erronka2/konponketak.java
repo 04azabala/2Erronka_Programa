@@ -5,25 +5,29 @@ import java.time.LocalDate;
 public class konponketak {
 	
 	private int id;
-	private String konponketen_egoera;
-	private String konponketen_xehetasuna;
-	private String konponketen_beharra;
-	private String hasierako_egoera;
-	private LocalDate amaiera_data;
 	private LocalDate sarrera_data;
-	private produktuak produktua;
+	private LocalDate amaiera_data;
+	private String hasierako_egoera;
+	private String konponenten_beharra;
+	private bezeroak bezeroa;
 	private String azken_emaitza;
+	private String proba_emaitza;
+	private String konponenten_xehetasunak;
+	private String konponenten_egoera;
 	
-	public konponketak(int id, String konponketen_egoera, String konponketen_xehetasuna, String konponketen_beharra, String hasierako_egoera, LocalDate amaiera_data, LocalDate sarrera_data, produktuak produktua, String azken_emaitza) {
+	
+	public konponketak(int id, LocalDate sarrera_data, LocalDate amaiera_data, String hasierako_egoera, String konponenten_beharra, bezeroak bezeroa, String azken_emaitza, String proba_emaitza, String konponenten_xehetasunak, String konponenten_egoera) {
 		this.id = id;
-		this.konponketen_egoera = konponketen_egoera;
-		this.konponketen_xehetasuna = konponketen_xehetasuna;
-		this.konponketen_beharra = konponketen_beharra;
-		this.hasierako_egoera = hasierako_egoera;
-		this.amaiera_data = amaiera_data;
 		this.sarrera_data = sarrera_data;
-		this.produktua = produktua;
+		this.amaiera_data = amaiera_data;
+		this.hasierako_egoera = hasierako_egoera;
+		this.konponenten_beharra = konponenten_beharra;
+		this.bezeroa = bezeroa;
 		this.azken_emaitza = azken_emaitza;
+		this.proba_emaitza = proba_emaitza;
+		this.konponenten_xehetasunak = konponenten_xehetasunak;
+		this.konponenten_egoera = konponenten_egoera;
+	
 	}
 	
 	public int getId() {
@@ -34,36 +38,12 @@ public class konponketak {
 		this.id = id;
 	}
 	
-	public String getKonponketenEgoera() {
-		return konponketen_egoera;
+	public LocalDate getSarreraData() {
+		return sarrera_data;
 	}
 	
-	public void setKonponketenEgoera(String konponketen_egoera) {
-		this.konponketen_egoera = konponketen_egoera;
-	}
-	
-	public String getKonponketenXehetasuna() {
-		return konponketen_xehetasuna;
-	}
-	
-	public void setKonponketenXehetasuna(String konponketen_xehetasuna) {
-		this.konponketen_xehetasuna = konponketen_xehetasuna;
-	}
-	
-	public String getKonponketenBeharra() {
-		return konponketen_beharra;
-	}
-	
-	public void setKonponketenBeharra(String konponketen_beharra) {
-		this.konponketen_beharra = konponketen_beharra;
-	}
-	
-	public String getHasierakoEgoera() {
-		return hasierako_egoera;
-	}
-	
-	public void setHasierakoEgoera(String hasierako_egoera) {
-		this.hasierako_egoera = hasierako_egoera;
+	public void setSarreraData(LocalDate sarrera_data) {
+		this.sarrera_data = sarrera_data;
 	}
 	
 	public LocalDate getAmaieraData() {
@@ -74,20 +54,28 @@ public class konponketak {
 		this.amaiera_data = amaiera_data;
 	}
 	
-	public LocalDate getSarreraData() {
-		return sarrera_data;
+	public String getHasierakoEgoera() {
+		return hasierako_egoera;
 	}
 	
-	public void setSarreraData(LocalDate sarrera_data) {
-		this.sarrera_data = sarrera_data;
+	public void setHasierakoEgoera(String hasierako_egoera) {
+		this.hasierako_egoera = hasierako_egoera;
 	}
 	
-	public produktuak getProduktuak() {
-		return produktua;
+	public String getKonponentenBeharra() {
+		return konponenten_beharra;
 	}
 	
-	public void setProduktuak(produktuak produktua) {
-		this.produktua = produktua;
+	public void setKonponentenBeharra(String konponenten_beharra) {
+		this.konponenten_beharra = konponenten_beharra;
+	}
+	
+	public bezeroak getBezeroa() {
+		return bezeroa;
+	}
+	
+	public void setBezeroa(bezeroak bezeroa) {
+		this.bezeroa = bezeroa;
 	}
 	
 	public String getAzkenEmaitza() {
@@ -96,5 +84,29 @@ public class konponketak {
 	
 	public void setAzkenEmaitza(String azken_emaitza) {
 		this.azken_emaitza = azken_emaitza;
+	}
+	
+	public String getProbaEmaitza() {
+		return proba_emaitza;
+	}
+	
+	public void setProbaEmaitza(String proba_emaitza) {
+		this.proba_emaitza = proba_emaitza;
+	}
+	
+	public String getKonponentenXehetasunak() {
+		return konponenten_xehetasunak;
+	}
+	
+	public void setKonponentenXehetasunak(String konponenten_xehetasunak) {
+		this.konponenten_xehetasunak = konponenten_xehetasunak;
+	}
+	
+	public String getKonponentenEgoera() {
+		return konponenten_egoera;
+	}
+	
+	public void setKonponentenEgoera(String konponenten_egoera) {
+		this.konponenten_egoera = konponenten_egoera;
 	}
 }

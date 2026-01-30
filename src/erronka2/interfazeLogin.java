@@ -76,6 +76,13 @@ public class interfazeLogin extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login.logina();
+				String rol = login.logina();
+				
+				if(rol.equals("administratzailea")) {
+					 new AdminMenu().setVisible(true);
+				     dispose();
+				}
+				
 			}
 		});
 		btnNewButton.setBounds(183, 184, 96, 20);

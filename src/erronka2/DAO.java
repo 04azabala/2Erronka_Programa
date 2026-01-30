@@ -161,4 +161,139 @@ public class DAO {
 
         return formularioKonponketaZerrenda;
     }
+    
+    public ArrayList<hornitzaileak> getHornitzaileak() {
+        ArrayList<hornitzaileak> hornitzaileZerrenda = new ArrayList<>();
+
+        try {
+            Connection con = konexioa.konektatu();
+            String sql = "SELECT * FROM hornitzaileak";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                hornitzaileak h = new hornitzaileak(
+                    rs.getInt("id"),
+                    rs.getString("izena"),
+                    rs.getString("kontaktu_izena"),
+                    rs.getString("email"),
+                    rs.getString("helbidea"),
+                    rs.getString("telefonoa")
+                );
+                hornitzaileZerrenda.add(h);
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return hornitzaileZerrenda;
+    }
+    
+    public ArrayList<produktuak> getProduktuak() {
+        ArrayList<produktuak> produktuZerrenda = new ArrayList<>();
+
+        try {
+            Connection con = konexioa.konektatu();
+            String sql = "SELECT * FROM produktuak";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                produktuak p = new produktuak(
+                    rs.getInt("id"),
+                    rs.getString("izena"),
+                    rs.getDouble("prezioa"),
+                    rs.getInt("stock"),
+                    rs.getString("egoera"),
+                    rs.getString("konponketa"),
+                    rs.getString("mota")
+                );
+                produktuZerrenda.add(p);
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return produktuZerrenda;
+    }
+    
+    public ArrayList<konponketak> getKonponketak() {
+        ArrayList<konponketak> konponketaZerrenda = new ArrayList<>();
+
+        try {
+            Connection con = konexioa.konektatu();
+            String sql = "SELECT * FROM konponketak";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+            	
+                konponketak k = new konponketak(
+                    rs.getInt("id"),
+                    rs.getDate("sarrera_data").toLocalDate(),
+                    rs.getDate("amaiera_data").toLocalDate(),
+                    rs.getString("hasierako_egoera"),
+                    rs.getString("konponketen_beharra"),
+                    new bezeroak(rs.getInt("bezero_id")),
+                    rs.getString("azken_emaitza"),
+                    rs.getString("proba_emaitza"),
+                    rs.getString("konponenten_xehetasunak"),
+                    rs.getString("konponenten_egoera")
+                );
+                konponketaZerrenda.add(k);
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return konponketaZerrenda;
+    }
+    
+    public ArrayList<saskia> getSaskia() {
+        ArrayList<saskia> saskiZerrenda = new ArrayList<>();
+
+        try {
+            Connection con = konexioa.konektatu();
+            String sql = "SELECT * FROM saskia";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+            	
+                saskia s = new saskia(
+                    rs.getInt("id"),
+                    new produktuak(rs.getInt("produktu_id")),
+                    new bezeroak(rs.getInt("bezero_id")),
+                    rs.getDouble("totala"),
+                    rs.getInt("zenbatekoa"),
+                    rs.getDate("data").toLocalDate()
+                );
+                saskiZerrenda.add(s);
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return saskiZerrenda;
+    }
 }
