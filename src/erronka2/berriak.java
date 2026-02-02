@@ -7,12 +7,14 @@ public class berriak {
 	private int id;
 	private String berria_izena;
 	private LocalDate data;
+	private String berria;
 	private String garrantzi_maila;
 	
-	public berriak(int id, String berria_izena, LocalDate data, String garrantzi_maila) {
+	public berriak(int id, String berria_izena, LocalDate data, String berria, String garrantzi_maila) {
 		this.id = id;
 		this.berria_izena = berria_izena;
 		this.data = data;
+		this.berria = berria;
 		this.garrantzi_maila = garrantzi_maila;
 	}
 	
@@ -38,6 +40,14 @@ public class berriak {
 	
 	public void setData(LocalDate data) {
 		this.data = data;
+	}
+	
+	public String getBerria() {
+		return berria;
+	}
+	
+	public void setBerria(String berria) {
+		this.berria = berria;
 	}
 	
 	public String getGarrantziMaila() {

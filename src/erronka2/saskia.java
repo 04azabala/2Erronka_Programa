@@ -5,16 +5,18 @@ import java.time.LocalDate;
 public class saskia {
 	
 	private int id;
-	private produktuak produktuak;
 	private bezeroak bezeroak;
+	private produktuak produktuak;
+	private fakturak faktura;
 	private double totala;
 	private int zenbatekoa;
 	private LocalDate data;
 	
-	public saskia(int id, produktuak produktuak, bezeroak bezeroak, double totala, int zenbatekoa, LocalDate data) {
+	public saskia(int id, bezeroak bezeroak, produktuak produktuak, fakturak faktura , double totala,LocalDate data, int zenbatekoa) {
 		this.id = id;
-		this.produktuak = produktuak;
 		this.bezeroak = bezeroak;
+		this.produktuak = produktuak;
+		this.faktura = faktura;
 		this.totala = totala;
 		this.zenbatekoa = zenbatekoa;
 		this.data = data;
@@ -42,6 +44,14 @@ public class saskia {
 	
 	public void setBezeroak(bezeroak bezeroak) {
 		this.bezeroak = bezeroak;
+	}
+	
+	public fakturak getFaktura() {
+		return faktura;
+	}
+	
+	public void setFaktura(fakturak faktura) {
+		this.faktura = faktura;
 	}
 	
 	public double getTotala() {

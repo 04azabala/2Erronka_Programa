@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class konexioa {
 
 	private static final String CONTROLADOREA="com.mysql.cj.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/erronka2";
+	private static final String URL = "jdbc:mysql://localhost:3306/2erronka";
 	private static final String ERABILTZAILEA="root";
 	private static final String PASAHITZA="1MG32025";
 	

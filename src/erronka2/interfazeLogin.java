@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -15,6 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class interfazeLogin extends JFrame {
+	
+	private static String rol;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -24,18 +28,7 @@ public class interfazeLogin extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					interfazeLogin frame = new interfazeLogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -75,18 +68,33 @@ public class interfazeLogin extends JFrame {
 		JButton btnNewButton = new JButton("Logeatu");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				login.logina();
-				String rol = login.logina();
+	
+				rol = login.logina();
 				
-				if(rol.equals("administratzailea")) {
+				
+				if(rol.equals("admin")) {
+					 JOptionPane.showMessageDialog(null, "Ongi etorri, rola:  "+rol);
 					 new AdminMenu().setVisible(true);
 				     dispose();
+				}else if(rol.equals("teknikaria")) {
+					JOptionPane.showMessageDialog(null, "Ongi etorri, rola:  "+rol);
+					new LangileMenu().setVisible(true);
+					dispose();
 				}
 				
-			}
+				}	
+			
+			
 		});
 		btnNewButton.setBounds(183, 184, 96, 20);
 		contentPane.add(btnNewButton);
-
+		
+		
+		
+	
+}
+	public static String getRola() {
+		return rol;
 	}
+	
 }

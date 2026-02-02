@@ -1,0 +1,92 @@
+package erronka2;
+
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
+
+public class interfazeFakturak extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTable table;
+
+	/**
+	 * Launch the application.
+	 */
+
+
+	/**
+	 * Create the frame.
+	 */
+	public interfazeFakturak() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 650, 350);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnNewButton = new JButton("Irten");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(interfazeLogin.getRola().equals("admin")) {
+					AdminMenu am = new AdminMenu();
+					am.setVisible(true);
+					dispose();
+				}else if(interfazeLogin.getRola().equals("teknikaria")) {
+					LangileMenu lm = new LangileMenu();
+					lm.setVisible(true);
+					dispose();
+					}
+				}
+		});
+		btnNewButton.setBounds(530, 10, 90, 25);
+		contentPane.add(btnNewButton);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 45, 610, 250);
+		contentPane.add(scrollPane);
+
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		kargatuTaula();
+
+
+	}
+	
+	private void kargatuTaula() {
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.setColumnIdentifiers(new String[] { "ID", "id_bezeroa", "data", "totala"});
+		table.setModel(modelo);
+		
+
+
+		DAO dao = new DAO();
+		ArrayList<fakturak> lista = dao.getFakturak();
+
+		
+
+		for (fakturak f : lista) {
+			modelo.addRow(new Object[] {
+				f.getId(),
+				f.getBezeroa(),
+				f.getData(),
+				f.getTotala()
+			});
+		}
+	}
+
+
+	
+
+}

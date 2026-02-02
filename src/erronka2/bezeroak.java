@@ -5,7 +5,7 @@ public class bezeroak {
 	private int id;
 	private String izena;
 	private String abizena;
-	private String rola;
+	private String NAN;
 	private String pasahitza;
 	private String email;
 	
@@ -13,13 +13,13 @@ public class bezeroak {
 		this.id = id;
 	}
 	
-	public bezeroak(int id, String izena, String abizena, String rola, String pasahitza, String email) {
+	public bezeroak(int id, String NAN, String izena, String abizena, String email, String pasahitza) {
 		this.id = id;
+		this.NAN = NAN;
 		this.izena = izena;
 		this.abizena = abizena;
-		this.rola = rola;
-		this.pasahitza = pasahitza;
 		this.email = email;
+		this.pasahitza = pasahitza;
 	}
 	
 	public int getId() {
@@ -46,12 +46,12 @@ public class bezeroak {
 		this.abizena = abizena;
 	}
 	
-	public String getRola() {
-		return rola;
+	public String getNAN() {
+		return NAN;
 	}
 	
-	public void setRola(String rola) {
-		this.rola = rola;
+	public void setNAN(String NAN) {
+		this.NAN = NAN;
 	}
 	
 	public String getPasahitza() {

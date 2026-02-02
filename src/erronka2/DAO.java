@@ -52,7 +52,8 @@ public class DAO {
                 berriak b = new berriak(
                     rs.getInt("id"),
                     rs.getString("berria_izena"),
-                    rs.getDate("data").toLocalDate(),
+                    rs.getDate("berria_data").toLocalDate(),
+                    rs.getString("berria"),
                     rs.getString("garrantzi_maila")
                 );
                 berriZerrenda.add(b);
@@ -81,7 +82,7 @@ public class DAO {
             while (rs.next()) {
                 bezeroak b = new bezeroak(
                     rs.getInt("id"),
-                    rs.getString("Nana"),
+                    rs.getString("NAN"),
                     rs.getString("izena"),
                     rs.getString("abizena"),
                     rs.getString("email"),
@@ -113,6 +114,7 @@ public class DAO {
             while (rs.next()) {
                 fakturak f = new fakturak(
                     rs.getInt("id"),
+                    new bezeroak(rs.getInt("id_bezeroa")),
                     rs.getDate("data").toLocalDate(),
                     rs.getDouble("totala")
                 );
@@ -240,6 +242,7 @@ public class DAO {
             	
                 konponketak k = new konponketak(
                     rs.getInt("id"),
+                    new langileak(rs.getInt("id_langilea")),
                     rs.getDate("sarrera_data").toLocalDate(),
                     rs.getDate("amaiera_data").toLocalDate(),
                     rs.getString("hasierako_egoera"),
@@ -269,7 +272,7 @@ public class DAO {
 
         try {
             Connection con = konexioa.konektatu();
-            String sql = "SELECT * FROM saskia";
+            String sql = "SELECT * FROM erosketa";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
@@ -277,11 +280,13 @@ public class DAO {
             	
                 saskia s = new saskia(
                     rs.getInt("id"),
-                    new produktuak(rs.getInt("produktu_id")),
-                    new bezeroak(rs.getInt("bezero_id")),
+                    new bezeroak(rs.getInt("id_bezeroa")),
+                    new produktuak(rs.getInt("id_produktua")),
+                    new fakturak(rs.getInt("id_faktura")),
                     rs.getDouble("totala"),
-                    rs.getInt("zenbatekoa"),
-                    rs.getDate("data").toLocalDate()
+                    rs.getDate("data").toLocalDate(),
+                    rs.getInt("zenbatekoa")
+                    
                 );
                 saskiZerrenda.add(s);
             }

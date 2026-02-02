@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class konponketak {
 	
 	private int id;
+	private langileak langilea;
 	private LocalDate sarrera_data;
 	private LocalDate amaiera_data;
 	private String hasierako_egoera;
@@ -16,8 +17,9 @@ public class konponketak {
 	private String konponenten_egoera;
 	
 	
-	public konponketak(int id, LocalDate sarrera_data, LocalDate amaiera_data, String hasierako_egoera, String konponenten_beharra, bezeroak bezeroa, String azken_emaitza, String proba_emaitza, String konponenten_xehetasunak, String konponenten_egoera) {
+	public konponketak(int id, langileak langilea ,LocalDate sarrera_data, LocalDate amaiera_data, String hasierako_egoera, String konponenten_beharra, bezeroak bezeroa, String azken_emaitza, String proba_emaitza, String konponenten_xehetasunak, String konponenten_egoera) {
 		this.id = id;
+		this.langilea = langilea;
 		this.sarrera_data = sarrera_data;
 		this.amaiera_data = amaiera_data;
 		this.hasierako_egoera = hasierako_egoera;
@@ -36,6 +38,14 @@ public class konponketak {
 	
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public langileak getLangilea() {
+		return langilea;
+	}
+	
+	public void setLangilea(langileak langilea) {
+		this.langilea = langilea;
 	}
 	
 	public LocalDate getSarreraData() {

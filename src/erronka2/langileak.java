@@ -9,6 +9,10 @@ public class langileak {
 	private String pasahitza;
 	private String rola;
 	
+	public langileak(int id) {
+		this.id = id;
+	}
+	
 	public langileak(int id, String izena, String abizena, String erabiltzailea, String pasahitza, String rola) {
 		this.id = id;
 		this.izena = izena;
@@ -64,5 +68,9 @@ public class langileak {
 	
 	public void setRola(String rola) {
 		this.rola = rola;
+	}
+	
+	public String toString() {
+		return String.valueOf(id);
 	}
 }
