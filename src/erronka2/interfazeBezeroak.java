@@ -90,7 +90,7 @@ public class interfazeBezeroak extends JFrame {
 		JButton btnNewButton_2 = new JButton("Gehitu");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				selectBerriak sb = new selectBerriak();
+				selectBezeroa sb = new selectBezeroa();
 				sb.setVisible(true);
 				dispose();
 			}
