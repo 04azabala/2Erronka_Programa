@@ -12,12 +12,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Font;
 
 public class interfazeBerriak extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
+	private JTextField textField_1;
+	private JTextField textField;
 
 	public interfazeBerriak() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,11 +51,55 @@ public class interfazeBerriak extends JFrame {
 		contentPane.add(btnNewButton);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 45, 610, 250);
+		scrollPane.setBounds(10, 80, 610, 215);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		JButton btnNewButton_1 = new JButton("Ezabatu");
+		btnNewButton_1.setBounds(192, 50, 84, 20);
+		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel = new JLabel("Berri bat gehitu:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel.setBounds(10, 16, 97, 12);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Berri bat ezabatu:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel_1.setBounds(10, 54, 90, 12);
+		contentPane.add(lblNewLabel_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(86, 51, 96, 18);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnNewButton_2 = new JButton("Gehitu");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				selectBerriak sb = new selectBerriak();
+				sb.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton_2.setBounds(76, 12, 84, 20);
+		contentPane.add(btnNewButton_2);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Berri bat editatu:");
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel_1_1.setBounds(286, 54, 90, 12);
+		contentPane.add(lblNewLabel_1_1);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(359, 51, 96, 18);
+		contentPane.add(textField);
+		
+		JButton btnNewButton_1_1 = new JButton("Editatu");
+		btnNewButton_1_1.setBounds(465, 50, 84, 20);
+		contentPane.add(btnNewButton_1_1);
 
 		kargatuTaula();
 	}

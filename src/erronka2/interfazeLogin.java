@@ -73,11 +73,9 @@ public class interfazeLogin extends JFrame {
 				
 				
 				if(rol.equals("admin")) {
-					 JOptionPane.showMessageDialog(null, "Ongi etorri, rola:  "+rol);
 					 new AdminMenu().setVisible(true);
 				     dispose();
 				}else if(rol.equals("teknikaria")) {
-					JOptionPane.showMessageDialog(null, "Ongi etorri, rola:  "+rol);
 					new LangileMenu().setVisible(true);
 					dispose();
 				}

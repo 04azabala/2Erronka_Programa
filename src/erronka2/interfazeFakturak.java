@@ -60,6 +60,8 @@ public class interfazeFakturak extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		kargatuTaula();
+		
+		
 
 
 	}
