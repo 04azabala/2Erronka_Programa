@@ -33,18 +33,6 @@ public class LangileMenu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Langileak");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				interfazeLangileak il = new interfazeLangileak();
-				il.setVisible(true);
-				dispose();
-			}
-		});
-		btnNewButton.setBounds(319, 83, 93, 80);
-		contentPane.add(btnNewButton);
-		
 		JButton btnNewButton_1 = new JButton("Bezeroak");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -54,7 +42,7 @@ public class LangileMenu extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_1.setBounds(216, 83, 93, 80);
+		btnNewButton_1.setBounds(269, 83, 93, 80);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("Produktuak");
@@ -66,7 +54,7 @@ public class LangileMenu extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_1_1.setBounds(113, 83, 93, 80);
+		btnNewButton_1_1.setBounds(166, 83, 93, 80);
 		contentPane.add(btnNewButton_1_1);
 		
 		JButton btnNewButton_1_1_1 = new JButton("Berriak");
@@ -78,7 +66,7 @@ public class LangileMenu extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_1_1_1.setBounds(10, 83, 93, 80);
+		btnNewButton_1_1_1.setBounds(63, 83, 93, 80);
 		contentPane.add(btnNewButton_1_1_1);
 		
 		JButton btnNewButton_1_1_1_1 = new JButton("Fakturak");

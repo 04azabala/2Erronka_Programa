@@ -39,11 +39,13 @@ public class interfazeLangileak extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(interfazeLogin.getRola().equals("admin")) {
+				langileak l = login.logina();
+				
+				if(l.getRola().equals("admin")) {
 					AdminMenu am = new AdminMenu();
 					am.setVisible(true);
 					dispose();
-				}else if(interfazeLogin.getRola().equals("teknikaria")) {
+				}else if(l.getRola().equals("teknikaria")) {
 					LangileMenu lm = new LangileMenu();
 					lm.setVisible(true);
 					dispose();

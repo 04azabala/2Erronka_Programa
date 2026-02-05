@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -14,9 +15,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class interfazeBezeroak extends JFrame {
 
@@ -25,6 +30,7 @@ public class interfazeBezeroak extends JFrame {
 	private JTable table;
 	private JTextField textField_1;
 	private JTextField textField;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -71,6 +77,33 @@ public class interfazeBezeroak extends JFrame {
 		
 		
 		JButton btnNewButton_1 = new JButton("Ezabatu");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int idBezeroak = Integer.parseInt(textField_1.getText());    
+		        
+		        String sql = "DELETE FROM bezeroak WHERE id = ?";
+		        
+		        try (Connection cn = konexioa.konektatu();
+		             PreparedStatement pst = cn.prepareStatement(sql)) {
+
+		            if (cn == null) return;
+
+		            pst.setInt(1, idBezeroak);
+		            int filas = pst.executeUpdate();
+
+		            if (filas > 0) {
+		                JOptionPane.showMessageDialog(null, "Ezabatuta");
+		            } else {
+		                JOptionPane.showMessageDialog(null, "Sartutako id-a ez da aurkitu");
+		            }
+
+		        } catch (SQLException ex) {
+		            ex.printStackTrace();
+		           
+		        }
+		        kargatuTaula();
+			}
+		});
 		btnNewButton_1.setBounds(207, 50, 84, 20);
 		contentPane.add(btnNewButton_1);
 		
@@ -83,6 +116,14 @@ public class interfazeBezeroak extends JFrame {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_1.setBounds(10, 54, 90, 12);
 		contentPane.add(lblNewLabel_1);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.addItem("izena");
+		comboBox.addItem("abizena");
+		comboBox.addItem("email");
+		comboBox.addItem("pasahitza");
+		comboBox.setBounds(410, 6, 97, 20);
+		contentPane.add(comboBox);
 		
 		textField_1 = new JTextField();
 		textField_1.setBounds(95, 52, 96, 18);
@@ -100,19 +141,66 @@ public class interfazeBezeroak extends JFrame {
 		btnNewButton_2.setBounds(84, 12, 84, 20);
 		contentPane.add(btnNewButton_2);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Bezero bat editatu:");
+		JLabel lblNewLabel_1_1 = new JLabel("Datu berria:");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lblNewLabel_1_1.setBounds(301, 54, 90, 12);
+		lblNewLabel_1_1.setBounds(346, 54, 90, 12);
 		contentPane.add(lblNewLabel_1_1);
+		
+		JButton btnNewButton_1_1 = new JButton("Editatu");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int idBezeroa = Integer.parseInt(textField_2.getText()); 
+				String zutabea = (String) comboBox.getSelectedItem();
+				String aldaketa = textField.getText();
+				
+		        
+		        String sql = "UPDATE bezeroak SET "+ zutabea +" = ? WHERE id = ?";
+		        
+		        try (Connection cn = konexioa.konektatu();
+		             PreparedStatement pst = cn.prepareStatement(sql)) {
+
+		            if (cn == null) return;
+
+		            pst.setString(1, aldaketa);
+		            pst.setInt(2, idBezeroa);
+		            int filas = pst.executeUpdate();
+
+		            if (filas > 0) {
+		                JOptionPane.showMessageDialog(null, "Editatuta");
+		            } else {
+		                JOptionPane.showMessageDialog(null, "Sartutako id-a ez da aurkitu");
+		            }
+
+		        } catch (SQLException ex) {
+		            ex.printStackTrace();
+		           
+		        }
+		        kargatuTaula();
+			}
+		});
+		btnNewButton_1_1.setBounds(536, 50, 84, 20);
+		contentPane.add(btnNewButton_1_1);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("Editatzeko id-a:");
+		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel_1_1_1.setBounds(346, 32, 90, 12);
+		contentPane.add(lblNewLabel_1_1_1);
+		
+		JLabel lblNewLabel_1_1_1_1 = new JLabel("Zutabea:");
+		lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel_1_1_1_1.setBounds(346, 10, 90, 12);
+		contentPane.add(lblNewLabel_1_1_1_1);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(376, 51, 96, 18);
+		textField.setBounds(411, 51, 96, 18);
 		contentPane.add(textField);
 		
-		JButton btnNewButton_1_1 = new JButton("Editatu");
-		btnNewButton_1_1.setBounds(482, 50, 84, 20);
-		contentPane.add(btnNewButton_1_1);
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(411, 29, 96, 18);
+		contentPane.add(textField_2);
+		
 		
 		kargatuTaula();
 		

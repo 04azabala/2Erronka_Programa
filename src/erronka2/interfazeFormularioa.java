@@ -56,14 +56,15 @@ public class interfazeFormularioa extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Onartu");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnNewButton.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 
 		        langileak l = login.logina();
 		        if (l == null) return;
 
-		        int idFormulario;
-		        idFormulario = Integer.parseInt(textField.getText());		      
+		        
+		        int idFormulario = Integer.parseInt(textField.getText());		      
 		        int id_langilea = l.getId();
 		        LocalDate sarrera_data = LocalDate.now();
 		        
@@ -85,7 +86,7 @@ public class interfazeFormularioa extends JFrame {
 			            egoera = rs.getString("produktuaren_deskribapena");
 			        }
 			        
-			        String sql1 = "SELECT izena, abizena FROM formularioa WHERE id = "+l.getId()+" && Bezero_mota = 'hornitzailea'" ;
+			        String sql1 = "SELECT Harremanetako_pertsona FROM formularioa WHERE id = "+ idFormulario + " && Bezero_mota = 'hornitzailea'" ;
 			        PreparedStatement pst1 = cn.prepareStatement(sql1);
 			        
 
@@ -93,11 +94,11 @@ public class interfazeFormularioa extends JFrame {
 
 			        String hornitzaile_izena = null;
 			        if (rs1.next()) {
-			        	hornitzaile_izena = rs1.getString("izena") + " " + rs1.getString("abizena");
+			        	hornitzaile_izena = rs1.getString("Harremanetako_pertsona");
 			        }
 			        
 			        
-			        String sql3 = "SELECT izena, abizena FROM formularioa WHERE id = "+l.getId()+" && Bezero_mota = 'bezeroa'" ;
+			        String sql3 = "SELECT izena, abizena FROM formularioa WHERE id = "+ idFormulario +" && Bezero_mota = 'bezeroa'" ;
 			        PreparedStatement pst3 = cn.prepareStatement(sql3);
 			        
 
@@ -153,6 +154,35 @@ public class interfazeFormularioa extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnDeuseztatu = new JButton("Deuseztatu");
+		btnDeuseztatu.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        int idFormulario = Integer.parseInt(textField.getText());    
+		        
+		        String sql = "DELETE FROM formularioa WHERE id = ?";
+		        
+		        try (Connection cn = konexioa.konektatu();
+		             PreparedStatement pst = cn.prepareStatement(sql)) {
+
+		            if (cn == null) return;
+
+		            pst.setInt(1, idFormulario);
+		            int filas = pst.executeUpdate();
+
+		            if (filas > 0) {
+		                JOptionPane.showMessageDialog(null, "Duseztatuta");
+		            } else {
+		                JOptionPane.showMessageDialog(null, "Sartutako id-a ez da aurkitu");
+		            }
+
+		        } catch (SQLException ex) {
+		            ex.printStackTrace();
+		           
+		        }
+		        kargatuTaula();
+		    }
+		});
+
+		btnDeuseztatu.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnDeuseztatu.setBounds(222, 40, 84, 20);
 		contentPane.add(btnDeuseztatu);
 		

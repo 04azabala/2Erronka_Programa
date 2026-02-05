@@ -4,25 +4,31 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JComboBox;
 
 public class interfazeKonponketak extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_3;
+	private JTextField textField_4;
 
 	/**
 	 * Launch the application.
@@ -44,11 +50,13 @@ public class interfazeKonponketak extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(interfazeLogin.getRola().equals("admin")) {
+				langileak l = login.logina();
+				
+				if(l.getRola().equals("admin")) {
 					AdminMenu am = new AdminMenu();
 					am.setVisible(true);
 					dispose();
-				}else if(interfazeLogin.getRola().equals("teknikaria")) {
+				}else if(l.getRola().equals("teknikaria")) {
 					LangileMenu lm = new LangileMenu();
 					lm.setVisible(true);
 					dispose();
@@ -66,6 +74,33 @@ public class interfazeKonponketak extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton_1 = new JButton("Ezabatu");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int idKonponketa = Integer.parseInt(textField_1.getText());    
+		        
+		        String sql = "DELETE FROM konponketak WHERE id = ?";
+		        
+		        try (Connection cn = konexioa.konektatu();
+		             PreparedStatement pst = cn.prepareStatement(sql)) {
+
+		            if (cn == null) return;
+
+		            pst.setInt(1, idKonponketa);
+		            int filas = pst.executeUpdate();
+
+		            if (filas > 0) {
+		                JOptionPane.showMessageDialog(null, "Ezabatuta");
+		            } else {
+		                JOptionPane.showMessageDialog(null, "Sartutako id-a ez da aurkitu");
+		            }
+
+		        } catch (SQLException ex) {
+		            ex.printStackTrace();
+		           
+		        }
+		        kargatuTaula();
+			}
+		});
 		btnNewButton_1.setBounds(218, 50, 84, 20);
 		contentPane.add(btnNewButton_1);
 		
@@ -84,6 +119,12 @@ public class interfazeKonponketak extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.addItem("amaiera_data");
+		comboBox.addItem("hasierako_egoera");
+		comboBox.setBounds(459, 6, 96, 20);
+		contentPane.add(comboBox);
+		
 		JButton btnNewButton_2 = new JButton("Gehitu");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -95,19 +136,69 @@ public class interfazeKonponketak extends JFrame {
 		btnNewButton_2.setBounds(111, 12, 84, 20);
 		contentPane.add(btnNewButton_2);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Konponketa bat editatu:");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lblNewLabel_1_1.setBounds(375, 54, 115, 12);
-		contentPane.add(lblNewLabel_1_1);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(486, 52, 96, 18);
-		contentPane.add(textField);
-		
 		JButton btnNewButton_1_1 = new JButton("Editatu");
-		btnNewButton_1_1.setBounds(592, 50, 84, 20);
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int idKonponketa = Integer.parseInt(textField_3.getText()); 
+				String zutabea = (String) comboBox.getSelectedItem();
+				String aldaketa = textField_4.getText();
+				
+		        
+		        String sql = "UPDATE konponketak SET "+ zutabea +" = ? WHERE id = ?";
+		        
+		        try (Connection cn = konexioa.konektatu();
+		             PreparedStatement pst = cn.prepareStatement(sql)) {
+
+		            if (cn == null) return;
+
+		            pst.setString(1, aldaketa);
+		            pst.setInt(2, idKonponketa);
+		            int filas = pst.executeUpdate();
+
+		            if (filas > 0) {
+		                JOptionPane.showMessageDialog(null, "Editatuta");
+		            } else {
+		                JOptionPane.showMessageDialog(null, "Sartutako id-a ez da aurkitu");
+		            }
+
+		        } catch (SQLException ex) {
+		            ex.printStackTrace();
+		           
+		        }
+		        kargatuTaula();
+				
+			}
+		});
+		btnNewButton_1_1.setBounds(565, 50, 84, 20);
 		contentPane.add(btnNewButton_1_1);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("Zutabea:");
+		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel_1_1_1.setBounds(387, 10, 115, 12);
+		contentPane.add(lblNewLabel_1_1_1);
+		
+		JLabel lblNewLabel_1_1_2 = new JLabel("Editatzeko id-a:");
+		lblNewLabel_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel_1_1_2.setBounds(387, 32, 115, 12);
+		contentPane.add(lblNewLabel_1_1_2);
+		
+		JLabel lblNewLabel_1_1_2_1 = new JLabel("Datu berria:");
+		lblNewLabel_1_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel_1_1_2_1.setBounds(387, 54, 115, 12);
+		contentPane.add(lblNewLabel_1_1_2_1);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(459, 29, 96, 18);
+		contentPane.add(textField_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(459, 51, 96, 18);
+		contentPane.add(textField_4);
+		
+		
 		
 		
 		kargatuTaula();
@@ -140,5 +231,4 @@ public class interfazeKonponketak extends JFrame {
 			});
 		}
 	}
-
 }
