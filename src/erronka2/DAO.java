@@ -1,8 +1,10 @@
 package erronka2;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DAO {
@@ -132,37 +134,7 @@ public class DAO {
         return fakturaZerrenda;
     }
     
-    public ArrayList<formularioKonponketa> getFormularioKonponketa() {
-        ArrayList<formularioKonponketa> formularioKonponketaZerrenda = new ArrayList<>();
-
-        try {
-            Connection con = konexioa.konektatu();
-            String sql = "SELECT * FROM formulario_konponketa";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                formularioKonponketa f = new formularioKonponketa(
-                    rs.getInt("id"),
-                    rs.getString("izena"),
-                    rs.getString("kontaktu_izena"),
-                    rs.getString("email"),
-                    rs.getString("telefonoa"),
-                    rs.getString("helbidea")
-                );
-                formularioKonponketaZerrenda.add(f);
-            }
-
-            rs.close();
-            ps.close();
-            con.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return formularioKonponketaZerrenda;
-    }
+    
     
     public ArrayList<hornitzaileak> getHornitzaileak() {
         ArrayList<hornitzaileak> hornitzaileZerrenda = new ArrayList<>();
@@ -239,22 +211,22 @@ public class DAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-            	
+
+                Date amaieraSql = rs.getDate("amaiera_data");
+                LocalDate amaieraData = (amaieraSql != null) ? amaieraSql.toLocalDate() : null;
+
                 konponketak k = new konponketak(
                     rs.getInt("id"),
                     new langileak(rs.getInt("id_langilea")),
                     rs.getDate("sarrera_data").toLocalDate(),
-                    rs.getDate("amaiera_data").toLocalDate(),
+                    amaieraData,
                     rs.getString("hasierako_egoera"),
-                    rs.getString("konponketen_beharra"),
-                    new bezeroak(rs.getInt("bezero_id")),
-                    rs.getString("azken_emaitza"),
-                    rs.getString("proba_emaitza"),
-                    rs.getString("konponenten_xehetasunak"),
-                    rs.getString("konponenten_egoera")
+                    rs.getString("hornitzaile_izena"),
+                    rs.getString("bezero_izena")
                 );
                 konponketaZerrenda.add(k);
             }
+
 
             rs.close();
             ps.close();
@@ -300,5 +272,47 @@ public class DAO {
         }
 
         return saskiZerrenda;
+    }
+    
+    public ArrayList<formularioa> getFormularioa() {
+        ArrayList<formularioa> FormularioZerrenda = new ArrayList<>();
+
+        try {
+            Connection con = konexioa.konektatu();
+            String sql = "SELECT * FROM formularioa";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+            	
+                formularioa s = new formularioa(
+                    rs.getInt("id"),
+                    rs.getString("Bezero_mota"),
+                    rs.getString("Izena"),
+                    rs.getString("Abizena"),
+                    rs.getString("Harremanetako_pertsona"),
+                    rs.getString("Posta_elektronikoa"),
+                    rs.getString("Telefonoa"),
+                    rs.getString("Enpresaren_izena"),
+                    rs.getString("Produktu_mota"),
+                    rs.getString("Produktu_marka"),
+                    rs.getString("Produktua"),
+                    rs.getInt("Produktu_kopurua"),
+                    rs.getString("Produktuaren_deskribapena"),
+                    rs.getString("Oharrak")
+                    
+                );
+                FormularioZerrenda.add(s);
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return FormularioZerrenda;
     }
 }

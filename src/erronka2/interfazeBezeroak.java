@@ -46,11 +46,13 @@ public class interfazeBezeroak extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(interfazeLogin.getRola().equals("admin")) {
+				langileak l = login.logina();
+				
+				if(l.getRola().equals("admin")) {
 					AdminMenu am = new AdminMenu();
 					am.setVisible(true);
 					dispose();
-				}else if(interfazeLogin.getRola().equals("teknikaria")) {
+				}else if(l.getRola().equals("teknikaria")) {
 					LangileMenu lm = new LangileMenu();
 					lm.setVisible(true);
 					dispose();
@@ -90,7 +92,7 @@ public class interfazeBezeroak extends JFrame {
 		JButton btnNewButton_2 = new JButton("Gehitu");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				selectBezeroa sb = new selectBezeroa();
+				insertBezeroa sb = new insertBezeroa();
 				sb.setVisible(true);
 				dispose();
 			}

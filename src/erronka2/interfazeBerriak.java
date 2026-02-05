@@ -35,12 +35,14 @@ public class interfazeBerriak extends JFrame {
 		JButton btnNewButton = new JButton("Irten");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				langileak l = login.logina();
 
-				if (interfazeLogin.getRola().equals("admin")) {
+				if (l.getRola().equals("admin")) {
 					AdminMenu am = new AdminMenu();
 					am.setVisible(true);
 					dispose();
-				} else if (interfazeLogin.getRola().equals("teknikaria")) {
+				} else if (l.getRola().equals("teknikaria")) {
 					LangileMenu lm = new LangileMenu();
 					lm.setVisible(true);
 					dispose();
@@ -79,7 +81,7 @@ public class interfazeBerriak extends JFrame {
 		JButton btnNewButton_2 = new JButton("Gehitu");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				selectBerriak sb = new selectBerriak();
+				insertBerriak sb = new insertBerriak();
 				sb.setVisible(true);
 				dispose();
 			}

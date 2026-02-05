@@ -69,13 +69,13 @@ public class interfazeLogin extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 	
-				rol = login.logina();
+				langileak l = login.logina();
 				
 				
-				if(rol.equals("admin")) {
+				if(l.getRola().equals("admin")) {
 					 new AdminMenu().setVisible(true);
 				     dispose();
-				}else if(rol.equals("teknikaria")) {
+				}else if(l.getRola().equals("teknikaria")) {
 					new LangileMenu().setVisible(true);
 					dispose();
 				}

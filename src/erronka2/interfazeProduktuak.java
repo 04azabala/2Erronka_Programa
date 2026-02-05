@@ -88,7 +88,7 @@ public class interfazeProduktuak extends JFrame {
 		JButton btnNewButton_2 = new JButton("Gehitu");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				selectProduktuak sp = new selectProduktuak();
+				insertProduktuak sp = new insertProduktuak();
 				sp.setVisible(true);
 				dispose();
 			}

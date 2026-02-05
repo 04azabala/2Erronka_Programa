@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 public class login {
 
-    public static String logina() {
+    public static langileak logina() {
        
 
         DAO dao = new DAO();
@@ -15,8 +15,7 @@ public class login {
 
         for (langileak l : langileZerrenda) {
             if (l.getErabiltzailea().equals(interfazeLogin.textField.getText()) && l.getPasahitza().equals(interfazeLogin.textField_1.getText())) { 
-            	JOptionPane.showMessageDialog(null, "Ongi etorri " + l.getIzena() + " " + l.getAbizena() + ", rola:"+l.getRola());
-                return l.getRola();
+                return l;
             }
     }
         JOptionPane.showMessageDialog(null, "Erabiltzailea edo pasahitza okerra ");

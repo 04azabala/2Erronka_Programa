@@ -23,7 +23,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.time.LocalDate;
 
-public class selectBerriak extends JFrame {
+public class insertBerriak extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -40,7 +40,7 @@ public class selectBerriak extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public selectBerriak() {
+	public insertBerriak() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
