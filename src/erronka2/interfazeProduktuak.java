@@ -45,11 +45,12 @@ public class interfazeProduktuak extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		langileak l = login.logina();
 		
 		JButton btnNewButton = new JButton("Irten");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				langileak l = login.logina();
 				
 				if(l.getRola().equals("admin")) {
 					AdminMenu am = new AdminMenu();
@@ -103,28 +104,18 @@ public class interfazeProduktuak extends JFrame {
 		});
 		btnNewButton_1.setBounds(213, 50, 84, 20);
 		contentPane.add(btnNewButton_1);
-		if(l.getRola().equals("teknikaria")) {
-			btnNewButton_1.setVisible(false);
-		}
 		
 		JLabel lblNewLabel = new JLabel("Produktu bat gehitu:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel.setBounds(10, 16, 97, 12);
 		contentPane.add(lblNewLabel);
-		if(l.getRola().equals("teknikaria")) {
-			lblNewLabel.setVisible(false);
-		}
 		
 		JLabel lblNewLabel_1 = new JLabel("Produktu bat ezabatu:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_1.setBounds(10, 54, 90, 12);
 		contentPane.add(lblNewLabel_1);
-		if(l.getRola().equals("teknikaria")) {
-			lblNewLabel_1.setVisible(false);
-		}
 		
 		JComboBox comboBox = new JComboBox();
-		if(l.getRola().equals("admin")) {
 		comboBox.addItem("izena");
 		comboBox.addItem("prezioa");
 		comboBox.addItem("stock");
@@ -132,10 +123,6 @@ public class interfazeProduktuak extends JFrame {
 		comboBox.addItem("konponketa");
 		comboBox.addItem("mota");
 		comboBox.addItem("irudia");
-		}else if(l.getRola().equals("teknikaria")) {
-		comboBox.addItem("stock");
-		}
-		
 		comboBox.setBounds(414, 6, 96, 20);
 		contentPane.add(comboBox);
 		
@@ -143,9 +130,6 @@ public class interfazeProduktuak extends JFrame {
 		textField_1.setBounds(107, 51, 96, 18);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
-		if(l.getRola().equals("teknikaria")) {
-			textField_1.setVisible(false);
-		}
 		
 		JButton btnNewButton_2 = new JButton("Gehitu");
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -157,9 +141,6 @@ public class interfazeProduktuak extends JFrame {
 		});
 		btnNewButton_2.setBounds(98, 12, 84, 20);
 		contentPane.add(btnNewButton_2);
-		if(l.getRola().equals("teknikaria")) {
-			btnNewButton_2.setVisible(false);
-		}
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Datu berria:");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 9));

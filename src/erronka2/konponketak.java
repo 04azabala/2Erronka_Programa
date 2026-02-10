@@ -6,25 +6,23 @@ public class konponketak {
 	
 	private int id;
 	private langileak langilea;
-	private bezeroak bezero;
-	private hornitzaileak hornitzaile;
 	private LocalDate sarrera_data;
 	private LocalDate amaiera_data;
 	private String hasierako_egoera;
+	private String hornitzaile_izena;
+	private String bezero_izena;
 	
 	
 	
 	
-	
-	
-	public konponketak(int id, langileak langilea , bezeroak bezero, hornitzaileak hornitzaile, LocalDate sarrera_data, LocalDate amaiera_data, String hasierako_egoera ) {
+	public konponketak(int id, langileak langilea ,LocalDate sarrera_data, LocalDate amaiera_data, String hasierako_egoera, String hornitzaile_izena , String bezero_izena) {
 		this.id = id;
 		this.langilea = langilea;
-		this.bezero = bezero;
-		this.hornitzaile = hornitzaile;
 		this.sarrera_data = sarrera_data;
 		this.amaiera_data = amaiera_data;
 		this.hasierako_egoera = hasierako_egoera;
+		this.hornitzaile_izena = hornitzaile_izena;
+		this.bezero_izena = bezero_izena;
 	
 	}
 	
@@ -68,20 +66,20 @@ public class konponketak {
 		this.hasierako_egoera = hasierako_egoera;
 	}
 	
-	public hornitzaileak getHornitzaile() {
-		return hornitzaile;
+	public String getHornitzaileIzena() {
+		return hornitzaile_izena;
 	}
 	
-	public void setHornitzaileIzena(hornitzaileak hornitzaile) {
-		this.hornitzaile = hornitzaile;
+	public void setHornitzaileIzena(String hornitzaile_izena) {
+		this.hornitzaile_izena = hornitzaile_izena;
 	}
 	
-	public bezeroak getBezero() {
-		return bezero;
+	public String getBezeroIzena() {
+		return bezero_izena;
 	}
 	
-	public void setBezeroa(bezeroak bezero) {
-		this.bezero = bezero;
+	public void setBezeroa(String bezero_izena) {
+		this.bezero_izena = bezero_izena;
 	}
 	
 	

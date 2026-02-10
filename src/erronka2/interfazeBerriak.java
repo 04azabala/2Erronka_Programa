@@ -37,7 +37,6 @@ public class interfazeBerriak extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		langileak l = login.logina();
 
 		JButton btnNewButton = new JButton("Irten");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -97,10 +96,6 @@ public class interfazeBerriak extends JFrame {
 		btnNewButton_1.setBounds(192, 50, 84, 20);
 		contentPane.add(btnNewButton_1);
 		
-		if(l.getRola().equals("teknikaria")) {
-			btnNewButton_1.setVisible(false);
-		}
-		
 		JLabel lblNewLabel = new JLabel("Berri bat gehitu:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel.setBounds(10, 16, 97, 12);
@@ -110,19 +105,11 @@ public class interfazeBerriak extends JFrame {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_1.setBounds(10, 54, 90, 12);
 		contentPane.add(lblNewLabel_1);
-		if(l.getRola().equals("teknikaria")) {
-			lblNewLabel_1.setVisible(false);
-		}
 		
 		textField_1 = new JTextField();
 		textField_1.setBounds(86, 51, 96, 18);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
-		
-		if(l.getRola().equals("teknikaria")) {
-			textField_1.setVisible(false);
-		}
-		
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.addItem("berria_izena");
@@ -132,9 +119,6 @@ public class interfazeBerriak extends JFrame {
 		comboBox.addItem("garrantzi_maila");
 		comboBox.setBounds(393, 6, 96, 20);
 		contentPane.add(comboBox);
-		if(l.getRola().equals("teknikaria")) {
-			comboBox.setVisible(false);
-		}
 		
 		JButton btnNewButton_2 = new JButton("Gehitu");
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -151,17 +135,11 @@ public class interfazeBerriak extends JFrame {
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_1_1.setBounds(307, 54, 90, 12);
 		contentPane.add(lblNewLabel_1_1);
-		if(l.getRola().equals("teknikaria")) {
-			lblNewLabel_1_1.setVisible(false);
-		}
 		
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(393, 51, 96, 18);
 		contentPane.add(textField);
-		if(l.getRola().equals("teknikaria")) {
-			textField.setVisible(false);
-		}
 		
 		JButton btnNewButton_1_1 = new JButton("Editatu");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
@@ -197,33 +175,21 @@ public class interfazeBerriak extends JFrame {
 		});
 		btnNewButton_1_1.setBounds(499, 50, 84, 20);
 		contentPane.add(btnNewButton_1_1);
-		if(l.getRola().equals("teknikaria")) {
-			btnNewButton_1_1.setVisible(false);
-		}
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Editatzeko id-a:");
 		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_1_1_1.setBounds(307, 32, 90, 12);
 		contentPane.add(lblNewLabel_1_1_1);
-		if(l.getRola().equals("teknikaria")) {
-			lblNewLabel_1_1_1.setVisible(false);
-		}
 		
 		JLabel lblNewLabel_1_1_2 = new JLabel("Zutabea:");
 		lblNewLabel_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_1_1_2.setBounds(307, 10, 90, 12);
 		contentPane.add(lblNewLabel_1_1_2);
-		if(l.getRola().equals("teknikaria")) {
-			lblNewLabel_1_1_2.setVisible(false);
-		}
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBounds(393, 29, 96, 18);
 		contentPane.add(textField_2);
-		if(l.getRola().equals("teknikaria")) {
-			textField_2.setVisible(false);
-		}
 
 		kargatuTaula();
 	}

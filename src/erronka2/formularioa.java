@@ -3,8 +3,6 @@ package erronka2;
 public class formularioa {
 	
 	private int id;
-	private bezeroak bezero;
-	private hornitzaileak hornitzaile;
 	private String bezero_mota;
 	private String izena;
 	private String abizena;
@@ -20,10 +18,8 @@ public class formularioa {
 	private String oharrak;
 	
 	
-	public formularioa(int id, bezeroak bezero, hornitzaileak hornitzaile, String bezero_mota, String izena, String abizena, String harremanetako_pertsona, String posta_elektronikoa, String telefonoa, String enpresaren_izena, String produktu_mota, String produktu_marka, String produktua, int produktu_kopurua, String produktuaren_deskribapena, String oharrak) {
+	public formularioa(int id, String bezero_mota, String izena, String abizena, String harremanetako_pertsona, String posta_elektronikoa, String telefonoa, String enpresaren_izena, String produktu_mota, String produktu_marka, String produktua, int produktu_kopurua, String produktuaren_deskribapena, String oharrak) {
 		this.id = id;
-		this.bezero = bezero;
-		this.hornitzaile = hornitzaile;
 		this.bezero_mota = bezero_mota;
 		this.izena = izena;
 		this.abizena = abizena;
@@ -45,22 +41,6 @@ public class formularioa {
 	
 	public void setId(int id) {
 		this.id = id;
-	}
-	
-	public bezeroak getBezero() {
-		return bezero;
-	}
-	
-	public void setBezero(bezeroak bezero) {
-		this.bezero = bezero;
-	}
-	
-	public hornitzaileak getHornitzaile() {
-		return hornitzaile;
-	}
-	
-	public void setHornitzaileak(hornitzaileak hornitzaile) {
-		this.hornitzaile = hornitzaile;
 	}
 	
 	public String getBezeroMota() {

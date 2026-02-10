@@ -218,11 +218,11 @@ public class DAO {
                 konponketak k = new konponketak(
                     rs.getInt("id"),
                     new langileak(rs.getInt("id_langilea")),
-                    new bezeroak (rs.getInt("bezero_id")),
-                    new hornitzaileak(rs.getInt("hornitzaile_id")),
                     rs.getDate("sarrera_data").toLocalDate(),
                     amaieraData,
-                    rs.getString("hasierako_egoera")
+                    rs.getString("hasierako_egoera"),
+                    rs.getString("hornitzaile_izena"),
+                    rs.getString("bezero_izena")
                 );
                 konponketaZerrenda.add(k);
             }
@@ -253,7 +253,6 @@ public class DAO {
                 saskia s = new saskia(
                     rs.getInt("id"),
                     new bezeroak(rs.getInt("id_bezeroa")),
-                    new hornitzaileak(rs.getInt("id_hornitzailea")),
                     new produktuak(rs.getInt("id_produktua")),
                     new fakturak(rs.getInt("id_faktura")),
                     rs.getDouble("totala"),
@@ -288,8 +287,6 @@ public class DAO {
             	
                 formularioa s = new formularioa(
                     rs.getInt("id"),
-                    new bezeroak(rs.getInt("bezero_id")),
-                    new hornitzaileak(rs.getInt("hornitzaile_id")),
                     rs.getString("Bezero_mota"),
                     rs.getString("Izena"),
                     rs.getString("Abizena"),
@@ -302,7 +299,8 @@ public class DAO {
                     rs.getString("Produktua"),
                     rs.getInt("Produktu_kopurua"),
                     rs.getString("Produktuaren_deskribapena"),
-                    rs.getString("Oharrak")                    
+                    rs.getString("Oharrak")
+                    
                 );
                 FormularioZerrenda.add(s);
             }
