@@ -45,6 +45,7 @@ public class interfazeHornitzaileak extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		langileak l = login.logina();
 		
 		JButton btnNewButton = new JButton("Irten");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -73,7 +74,9 @@ public class interfazeHornitzaileak extends JFrame {
 		comboBox.addItem("pasahitza");
 		comboBox.addItem("helbidea");
 		comboBox.addItem("telefonoa");
-		
+		if(l.getRola().equals("teknikaria")) {
+			comboBox.setVisible(false);
+		}
 		comboBox.setBounds(415, 6, 96, 20);
 		contentPane.add(comboBox);
 		
@@ -105,8 +108,11 @@ public class interfazeHornitzaileak extends JFrame {
 		        kargatuTaula();
 			}
 		});
-		btnNewButton_1.setBounds(207, 50, 84, 20);
+		btnNewButton_1.setBounds(211, 50, 84, 20);
 		contentPane.add(btnNewButton_1);
+		if(l.getRola().equals("teknikaria")) {
+			btnNewButton_1.setVisible(false);
+		}
 		
 		JButton btnNewButton_1_1 = new JButton("Editatu");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
@@ -142,16 +148,25 @@ public class interfazeHornitzaileak extends JFrame {
 		});
 		btnNewButton_1_1.setBounds(536, 50, 84, 20);
 		contentPane.add(btnNewButton_1_1);
+		if(l.getRola().equals("teknikaria")) {
+			btnNewButton_1_1.setVisible(false);
+		}
 		
-		JLabel lblNewLabel_1 = new JLabel("Bezero bat ezabatu:");
+		JLabel lblNewLabel_1 = new JLabel("Hornitzaile bat ezabatu:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lblNewLabel_1.setBounds(10, 54, 90, 12);
+		lblNewLabel_1.setBounds(10, 54, 113, 12);
 		contentPane.add(lblNewLabel_1);
+		if(l.getRola().equals("teknikaria")) {
+			lblNewLabel_1.setVisible(false);
+		}
 		
-		JLabel lblNewLabel = new JLabel("Bezero bat gehitu:");
+		JLabel lblNewLabel = new JLabel("Hornitzaile bat gehitu:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel.setBounds(10, 16, 97, 12);
 		contentPane.add(lblNewLabel);
+		if(l.getRola().equals("teknikaria")) {
+			lblNewLabel.setVisible(false);
+		}
 		
 		JButton btnNewButton_2 = new JButton("Gehitu");
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -161,13 +176,19 @@ public class interfazeHornitzaileak extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_2.setBounds(84, 12, 84, 20);
+		btnNewButton_2.setBounds(95, 12, 84, 20);
 		contentPane.add(btnNewButton_2);
+		if(l.getRola().equals("teknikaria")) {
+			btnNewButton_2.setVisible(false);
+		}
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(95, 52, 96, 18);
+		textField_1.setBounds(105, 51, 96, 18);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
+		if(l.getRola().equals("teknikaria")) {
+			textField_1.setVisible(false);
+		}
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 80, 610, 215);
@@ -180,26 +201,41 @@ public class interfazeHornitzaileak extends JFrame {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_2.setBounds(361, 10, 44, 12);
 		contentPane.add(lblNewLabel_2);
+		if(l.getRola().equals("teknikaria")) {
+			lblNewLabel_2.setVisible(false);
+		}
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Editatzeko id-a:");
 		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_2_1.setBounds(334, 32, 71, 12);
 		contentPane.add(lblNewLabel_2_1);
+		if(l.getRola().equals("teknikaria")) {
+			lblNewLabel_2_1.setVisible(false);
+		}
 		
 		JLabel lblNewLabel_2_2 = new JLabel("Datu berria:");
 		lblNewLabel_2_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_2_2.setBounds(350, 54, 78, 12);
 		contentPane.add(lblNewLabel_2_2);
+		if(l.getRola().equals("teknikaria")) {
+			lblNewLabel_2_2.setVisible(false);
+		}
 		
 		textField = new JTextField();
 		textField.setBounds(415, 29, 96, 18);
 		contentPane.add(textField);
 		textField.setColumns(10);
+		if(l.getRola().equals("teknikaria")) {
+			textField.setVisible(false);
+		}
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBounds(415, 51, 96, 18);
 		contentPane.add(textField_2);
+		if(l.getRola().equals("teknikaria")) {
+			textField_2.setVisible(false);
+		}
 		
 		
 		kargatuTaula();
