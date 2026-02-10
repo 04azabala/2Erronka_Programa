@@ -9,6 +9,10 @@ public class hornitzaileak {
 	private String helbidea;
 	private String telefonoa;
 	
+	public hornitzaileak(int id){
+		this.id = id;
+	}
+	
 	public hornitzaileak(int id, String izena, String kontaktu_izena, String email, String helbidea, String telefonoa) {
 		this.id = id;
 		this.izena = izena;
@@ -64,6 +68,10 @@ public class hornitzaileak {
 	
 	public void setTelefonoa(String telefonoa) {
 		this.telefonoa = telefonoa;
+	}
+	
+	public String toString() {
+		return String.valueOf(id);
 	}
 
 }

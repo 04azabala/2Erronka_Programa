@@ -6,20 +6,22 @@ public class saskia {
 	
 	private int id;
 	private bezeroak bezeroak;
+	private hornitzaileak hornitzaile;
 	private produktuak produktuak;
 	private fakturak faktura;
 	private double totala;
-	private int zenbatekoa;
 	private LocalDate data;
+	private int zenbatekoa;
 	
-	public saskia(int id, bezeroak bezeroak, produktuak produktuak, fakturak faktura , double totala,LocalDate data, int zenbatekoa) {
+	public saskia(int id, bezeroak bezeroak, hornitzaileak hornitzaile , produktuak produktuak, fakturak faktura , double totala,LocalDate data, int zenbatekoa) {
 		this.id = id;
 		this.bezeroak = bezeroak;
+		this.hornitzaile = hornitzaile;
 		this.produktuak = produktuak;
 		this.faktura = faktura;
 		this.totala = totala;
-		this.zenbatekoa = zenbatekoa;
 		this.data = data;
+		this.zenbatekoa = zenbatekoa;		
 	}
 	
 	public int getId() {
@@ -44,6 +46,14 @@ public class saskia {
 	
 	public void setBezeroak(bezeroak bezeroak) {
 		this.bezeroak = bezeroak;
+	}
+	
+	public hornitzaileak getHornitzaile() {
+		return hornitzaile;
+	}
+	
+	public void setHornitzaile(hornitzaileak hornitzaile) {
+		this.hornitzaile = hornitzaile;
 	}
 	
 	public fakturak getFaktura() {

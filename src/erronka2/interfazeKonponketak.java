@@ -45,12 +45,11 @@ public class interfazeKonponketak extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		langileak l = login.logina();
 		
 		JButton btnNewButton = new JButton("Irten");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				langileak l = login.logina();
 				
 				if(l.getRola().equals("admin")) {
 					AdminMenu am = new AdminMenu();
@@ -90,8 +89,8 @@ public class interfazeKonponketak extends JFrame {
 
 		            if (filas > 0) {
 		                JOptionPane.showMessageDialog(null, "Ezabatuta");
-		            } else {
-		                JOptionPane.showMessageDialog(null, "Sartutako id-a ez da aurkitu");
+		            }else {
+		            	JOptionPane.showMessageDialog(null, "Sartutako id-a ez da aurkitu");
 		            }
 
 		        } catch (SQLException ex) {
@@ -103,6 +102,9 @@ public class interfazeKonponketak extends JFrame {
 		});
 		btnNewButton_1.setBounds(218, 50, 84, 20);
 		contentPane.add(btnNewButton_1);
+		if(l.getRola().equals("teknikaria")) {
+			btnNewButton_1.setVisible(false);
+		}
 		
 		JLabel lblNewLabel = new JLabel("Konponketa bat gehitu:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
@@ -113,15 +115,28 @@ public class interfazeKonponketak extends JFrame {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_1.setBounds(10, 54, 123, 12);
 		contentPane.add(lblNewLabel_1);
+		if(l.getRola().equals("teknikaria")) {
+			lblNewLabel_1.setVisible(false);
+		}
+		
 		
 		textField_1 = new JTextField();
 		textField_1.setBounds(111, 51, 96, 18);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
+		if(l.getRola().equals("teknikaria")) {
+			textField_1.setVisible(false);
+		}
+		
+		
 		JComboBox comboBox = new JComboBox();
+		if(l.getRola().equals("admin")) {
 		comboBox.addItem("amaiera_data");
 		comboBox.addItem("hasierako_egoera");
+		}else if(l.getRola().equals("teknikaria")) {
+		comboBox.addItem("hasierako_egoera");	
+		}
 		comboBox.setBounds(459, 6, 96, 20);
 		contentPane.add(comboBox);
 		
@@ -208,7 +223,7 @@ public class interfazeKonponketak extends JFrame {
 	
 	private void kargatuTaula() {
 		DefaultTableModel modelo = new DefaultTableModel();
-		modelo.setColumnIdentifiers(new String[] { "ID", "id_langilea", "sarrera_data", "amaiera_data", "hasierako_egoera", "hornitzaile_izena" , "bezero_izena"});
+		modelo.setColumnIdentifiers(new String[] { "ID", "id_langilea", "bezero_id" ,"hornitzaile_id" ,"sarrera_data", "amaiera_data", "hasierako_egoera" });
 		table.setModel(modelo);
 		
 
@@ -222,11 +237,13 @@ public class interfazeKonponketak extends JFrame {
 			modelo.addRow(new Object[] {
 				k.getId(),
 				k.getLangilea(),
+				k.getBezero(),
+				k.getHornitzaile(),
 				k.getSarreraData(),
 				k.getAmaieraData(),
 				k.getHasierakoEgoera(),
-				k.getHornitzaileIzena(),
-				k.getBezeroIzena(),
+				
+				
 			
 			});
 		}

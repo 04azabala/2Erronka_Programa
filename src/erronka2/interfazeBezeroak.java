@@ -47,6 +47,7 @@ public class interfazeBezeroak extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		langileak l = login.logina();
 		
 		JButton btnNewButton = new JButton("Irten");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -106,6 +107,9 @@ public class interfazeBezeroak extends JFrame {
 		});
 		btnNewButton_1.setBounds(207, 50, 84, 20);
 		contentPane.add(btnNewButton_1);
+		if(l.getRola().equals("teknikaria")) {
+			btnNewButton_1.setVisible(false);
+		}
 		
 		JLabel lblNewLabel = new JLabel("Bezero bat gehitu:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
@@ -116,6 +120,9 @@ public class interfazeBezeroak extends JFrame {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_1.setBounds(10, 54, 90, 12);
 		contentPane.add(lblNewLabel_1);
+		if(l.getRola().equals("teknikaria")) {
+			lblNewLabel_1.setVisible(false);
+		}
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.addItem("izena");
@@ -129,6 +136,9 @@ public class interfazeBezeroak extends JFrame {
 		textField_1.setBounds(95, 52, 96, 18);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
+		if(l.getRola().equals("teknikaria")) {
+			textField_1.setVisible(false);
+		}
 		
 		JButton btnNewButton_2 = new JButton("Gehitu");
 		btnNewButton_2.addActionListener(new ActionListener() {
