@@ -11,11 +11,12 @@ public class berriak {
 	private String berri_argazkia;
 	private String garrantzi_maila;
 	
-	public berriak(int id, String berria_izena, LocalDate data, String berria, String garrantzi_maila) {
+	public berriak(int id, String berria_izena, LocalDate data, String berria, String berri_argazkia, String garrantzi_maila) {
 		this.id = id;
 		this.berria_izena = berria_izena;
 		this.data = data;
 		this.berria = berria;
+		this.berri_argazkia = berri_argazkia;
 		this.garrantzi_maila = garrantzi_maila;
 	}
 	
@@ -49,6 +50,10 @@ public class berriak {
 	
 	public void setBerria(String berria) {
 		this.berria = berria;
+	}
+	
+	public String getBerriArgazkia() {
+		return berri_argazkia;
 	}
 	
 	public String getGarrantziMaila() {

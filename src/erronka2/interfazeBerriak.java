@@ -231,7 +231,7 @@ public class interfazeBerriak extends JFrame {
 	
 	private void kargatuTaula() {
 		DefaultTableModel modelo = new DefaultTableModel();
-		modelo.setColumnIdentifiers(new String[] { "ID", "Izena", "Data", "Berria", "Garrantzia" });
+		modelo.setColumnIdentifiers(new String[] { "ID", "Izena", "Data", "Berria", "argazkia", "Garrantzia" });
 		table.setModel(modelo);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 

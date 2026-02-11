@@ -56,6 +56,7 @@ public class DAO {
                     rs.getString("berria_izena"),
                     rs.getDate("berria_data").toLocalDate(),
                     rs.getString("berria"),
+                    rs.getString("berria_argazkia"),
                     rs.getString("garrantzi_maila")
                 );
                 berriZerrenda.add(b);
@@ -105,7 +106,7 @@ public class DAO {
     }
     
     public bezeroak getBezeroa(int id) {
-        bezeroak b = null;  // Declarar fuera para poder retornarlo
+        bezeroak b = null;  
 
         try {
             Connection con = konexioa.konektatu();
@@ -114,7 +115,7 @@ public class DAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {  // Solo un registro
+            if (rs.next()) {  
                 b = new bezeroak(
                     rs.getInt("id"),
                     rs.getString("NAN"),
@@ -137,7 +138,7 @@ public class DAO {
     }
     
     public hornitzaileak getHornitzailea(int id) {
-        hornitzaileak h = null;  // Declarar fuera para poder retornarlo
+        hornitzaileak h = null; 
 
         try {
             Connection con = konexioa.konektatu();
@@ -146,7 +147,7 @@ public class DAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {  // Solo un registro
+            if (rs.next()) {  
                 h = new hornitzaileak(
                     rs.getInt("id"),
                     rs.getString("izena"),
