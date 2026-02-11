@@ -255,7 +255,8 @@ public class DAO {
                     new saskia(rs.getInt("id_saskia")),
                     rs.getDate("data").toLocalDate(),
                     rs.getDouble("totala"),
-                    rs.getInt("zenbatekoa")
+                    rs.getInt("zenbatekoa"),
+                    rs.getString("faktura_ruta")
                 );
                 fakturaZerrenda.add(f);
             }
@@ -482,7 +483,8 @@ public class DAO {
                     s,
                     rs.getDate("data").toLocalDate(),
                     rs.getDouble("totala"),
-                    rs.getInt("zenbatekoa")
+                    rs.getInt("zenbatekoa"),
+                    rs.getString("faktura_ruta")
                 );
             }
 

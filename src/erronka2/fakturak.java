@@ -12,12 +12,13 @@ public class fakturak {
 	private LocalDate data;
 	private double totala;
 	private int zenbatekoa;
+	private String faktura_ruta;
 	
 	public fakturak(int id) {
 		this.id = id;
 	}
 	
-	public fakturak(int id, bezeroak bezeroa, hornitzaileak hornitzaile, produktuak produktu , saskia saski, LocalDate data, double totala, int zenbatekoa) {
+	public fakturak(int id, bezeroak bezeroa, hornitzaileak hornitzaile, produktuak produktu , saskia saski, LocalDate data, double totala, int zenbatekoa, String faktura_ruta) {
 		this.id = id;
 		this.bezeroa = bezeroa;
 		this.hornitzaile = hornitzaile;
@@ -26,6 +27,15 @@ public class fakturak {
 		this.data = data;
 		this.totala = totala;
 		this.zenbatekoa = zenbatekoa;
+		this.faktura_ruta = faktura_ruta;
+	}
+	
+	public String getFakturaRuta() {
+		return faktura_ruta;
+	}
+	
+	public void setFakturaRuta(String faktura_ruta) {
+		this.faktura_ruta = faktura_ruta;
 	}
 	
 	public int getZenbatekoa() {

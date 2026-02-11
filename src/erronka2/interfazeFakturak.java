@@ -77,9 +77,9 @@ public class interfazeFakturak extends JFrame {
 
 		        int idFaktura = Integer.parseInt(textField.getText());
 
-		        // Consultar la factura desde la BD
+		        
 		        DAO dao = new DAO();
-		        fakturak f = dao.getFacturaPorId(idFaktura); // método que devolvemos una sola factura
+		        fakturak f = dao.getFacturaPorId(idFaktura); 
 
 		        if (f != null) {
 		           
@@ -99,6 +99,7 @@ public class interfazeFakturak extends JFrame {
 		        } else {
 		            javax.swing.JOptionPane.showMessageDialog(null, "No existe la factura con ese ID.");
 		        }
+		        
 		    }
 		});
 
@@ -124,7 +125,7 @@ public class interfazeFakturak extends JFrame {
 	
 	private void kargatuTaula() {
 		DefaultTableModel modelo = new DefaultTableModel();
-		modelo.setColumnIdentifiers(new String[] { "ID", "id_bezeroa", "id_hornitzailea", "id_produktua", "id_saskia" , "data" , "totala", "zenbatekoa"});
+		modelo.setColumnIdentifiers(new String[] { "ID", "id_bezeroa", "id_hornitzailea", "id_produktua", "id_saskia" , "data" , "totala", "zenbatekoa","faktura_ruta"});
 		table.setModel(modelo);
 		
 
@@ -143,7 +144,8 @@ public class interfazeFakturak extends JFrame {
 				f.getSaskia(),
 				f.getData(),
 				f.getTotala(),
-				f.getZenbatekoa()
+				f.getZenbatekoa(),
+				f.getFakturaRuta()
 			});
 		}
 	}

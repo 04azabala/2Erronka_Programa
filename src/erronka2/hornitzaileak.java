@@ -19,11 +19,12 @@ public class hornitzaileak {
 		this.kontaktu_izena = kontaktu_izena;
 	}
 	
-	public hornitzaileak(int id, String izena, String kontaktu_izena, String pasahitza, String email, String helbidea, String telefonoa) {
+	public hornitzaileak(int id, String izena, String kontaktu_izena, String email, String pasahitza, String helbidea, String telefonoa) {
 		this.id = id;
 		this.izena = izena;
 		this.kontaktu_izena = kontaktu_izena;
 		this.email = email;
+		this.pasahitza = pasahitza;
 		this.helbidea = helbidea;
 		this.telefonoa = telefonoa;
 	}

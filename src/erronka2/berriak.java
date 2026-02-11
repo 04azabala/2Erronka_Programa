@@ -8,6 +8,7 @@ public class berriak {
 	private String berria_izena;
 	private LocalDate data;
 	private String berria;
+	private String berri_argazkia;
 	private String garrantzi_maila;
 	
 	public berriak(int id, String berria_izena, LocalDate data, String berria, String garrantzi_maila) {
