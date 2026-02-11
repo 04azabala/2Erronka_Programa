@@ -14,6 +14,11 @@ public class produktuak {
 		this.id = id;
 	}
 	
+	public produktuak(int id, String izena) {
+		this.id = id;
+		this.izena = izena;
+	}
+	
 	public produktuak(int id, String izena, double prezioa, int stock, String egoera, String konponketa, String mota) {
 		this.id = id;
 		this.izena = izena;

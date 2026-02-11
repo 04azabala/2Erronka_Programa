@@ -8,17 +8,19 @@ public class saskia {
 	private bezeroak bezeroak;
 	private hornitzaileak hornitzaile;
 	private produktuak produktuak;
-	private fakturak faktura;
 	private double totala;
 	private LocalDate data;
 	private int zenbatekoa;
 	
-	public saskia(int id, bezeroak bezeroak, hornitzaileak hornitzaile , produktuak produktuak, fakturak faktura , double totala,LocalDate data, int zenbatekoa) {
+	public saskia(int id) {
+		this.id = id;
+	}
+	
+	public saskia(int id, bezeroak bezeroak, hornitzaileak hornitzaile , produktuak produktuak, double totala,LocalDate data, int zenbatekoa) {
 		this.id = id;
 		this.bezeroak = bezeroak;
 		this.hornitzaile = hornitzaile;
 		this.produktuak = produktuak;
-		this.faktura = faktura;
 		this.totala = totala;
 		this.data = data;
 		this.zenbatekoa = zenbatekoa;		
@@ -56,14 +58,6 @@ public class saskia {
 		this.hornitzaile = hornitzaile;
 	}
 	
-	public fakturak getFaktura() {
-		return faktura;
-	}
-	
-	public void setFaktura(fakturak faktura) {
-		this.faktura = faktura;
-	}
-	
 	public double getTotala() {
 		return totala;
 	}
@@ -86,6 +80,10 @@ public class saskia {
 	
 	public void setData(LocalDate data) {
 		this.data = data;
+	}
+	
+	public String toString() {
+		return String.valueOf(id);
 	}
 
 }

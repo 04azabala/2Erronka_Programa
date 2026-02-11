@@ -11,6 +11,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/irait/Downloads/PDFbox_Java.zip"/>
+	<classpathentry kind="lib" path="C:/Users/irait/Downloads/PDFbox_Java/PDFbox_Java/Lib/pdfbox-2.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/irait/Downloads/PDFbox_Java/PDFbox_Java/Lib/fontbox-2.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/irait/Downloads/PDFbox_Java/PDFbox_Java/Lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

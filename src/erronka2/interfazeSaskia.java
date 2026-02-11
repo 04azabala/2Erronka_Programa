@@ -166,7 +166,7 @@ public class interfazeSaskia extends JFrame {
 	
 	private void kargatuTaula() {
 		DefaultTableModel modelo = new DefaultTableModel();
-		modelo.setColumnIdentifiers(new String[] { "ID", "id_bezeroa", "id_hornitzailea", "id_produktua", "id_faktura", "totala","data","zenbatekoa"});
+		modelo.setColumnIdentifiers(new String[] { "ID", "id_bezeroa", "id_hornitzailea", "id_produktua", "totala","data","zenbatekoa"});
 		table.setModel(modelo);
 		
 
@@ -182,7 +182,6 @@ public class interfazeSaskia extends JFrame {
 				s.getBezeroak(),
 				s.getHornitzaile(),
 				s.getProduktuak(),
-				s.getFaktura(),
 				s.getTotala(),
 				s.getData(),
 				s.getZenbatekoa()

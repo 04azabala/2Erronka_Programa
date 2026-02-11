@@ -5,15 +5,21 @@ public class hornitzaileak {
 	private int id;
 	private String izena;
 	private String kontaktu_izena;
+	private String pasahitza;
 	private String email;
 	private String helbidea;
 	private String telefonoa;
 	
-	public hornitzaileak(int id){
+	public hornitzaileak(int id) {
 		this.id = id;
 	}
 	
-	public hornitzaileak(int id, String izena, String kontaktu_izena, String email, String helbidea, String telefonoa) {
+	public hornitzaileak(int id, String kontaktu_izena){
+		this.id = id;
+		this.kontaktu_izena = kontaktu_izena;
+	}
+	
+	public hornitzaileak(int id, String izena, String kontaktu_izena, String pasahitza, String email, String helbidea, String telefonoa) {
 		this.id = id;
 		this.izena = izena;
 		this.kontaktu_izena = kontaktu_izena;
@@ -44,6 +50,14 @@ public class hornitzaileak {
 	
 	public void setKontaktuIzena(String kontaktu_izena) {
 		this.kontaktu_izena = kontaktu_izena;
+	}
+	
+	public String getPasahitza() {
+		return pasahitza;
+	}
+	
+	public void setPasahitza(String pasahitza) {
+		this.pasahitza = pasahitza;
 	}
 	
 	public String getEmail() {
