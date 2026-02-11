@@ -13,6 +13,11 @@ public class bezeroak {
 		this.id = id;
 	}
 	
+	public bezeroak(int id, String izena) {
+		this.id = id;
+		this.izena = izena;
+	}
+	
 	public bezeroak(int id, String NAN, String izena, String abizena, String email, String pasahitza) {
 		this.id = id;
 		this.NAN = NAN;
@@ -71,6 +76,7 @@ public class bezeroak {
 	}
 	
 	public String toString() {
-		return String.valueOf(id);
+	    return this.izena;
 	}
+
 }

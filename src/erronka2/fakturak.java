@@ -6,18 +6,60 @@ public class fakturak {
 	
 	private int id;
 	private bezeroak bezeroa;
+	private hornitzaileak hornitzaile;
+	private produktuak produktu;
+	private saskia saski;
 	private LocalDate data;
 	private double totala;
+	private int zenbatekoa;
+	private String faktura_ruta;
 	
 	public fakturak(int id) {
 		this.id = id;
 	}
 	
-	public fakturak(int id, bezeroak bezeroa, LocalDate data, double totala) {
+	public fakturak(int id, bezeroak bezeroa, hornitzaileak hornitzaile, produktuak produktu , saskia saski, LocalDate data, double totala, int zenbatekoa, String faktura_ruta) {
 		this.id = id;
 		this.bezeroa = bezeroa;
+		this.hornitzaile = hornitzaile;
+		this.produktu = produktu;
+		this.saski = saski;
 		this.data = data;
 		this.totala = totala;
+		this.zenbatekoa = zenbatekoa;
+		this.faktura_ruta = faktura_ruta;
+	}
+	
+	public String getFakturaRuta() {
+		return faktura_ruta;
+	}
+	
+	public void setFakturaRuta(String faktura_ruta) {
+		this.faktura_ruta = faktura_ruta;
+	}
+	
+	public int getZenbatekoa() {
+		return zenbatekoa;
+	}
+	
+	public void setZenbatekoa(int zenbatekoa) {
+		this.zenbatekoa = zenbatekoa;
+	}
+	
+	public produktuak getProduktu() {
+		return produktu;
+	}
+	
+	public void setProduktu(produktuak produktu) {
+		this.produktu = produktu;
+	}
+	
+	public saskia getSaskia() {
+		return saski;
+	}
+	
+	public void setSaskia(saskia saski) {
+		this.saski = saski;
 	}
 	
 	public int getId() {
@@ -34,6 +76,14 @@ public class fakturak {
 	
 	public void setBezeroa(bezeroak bezeroa) {
 		this.bezeroa = bezeroa;
+	}
+	
+	public hornitzaileak getHornitzailea() {
+		return hornitzaile;
+	}
+	
+	public void setHornitzailea(hornitzaileak hornitzaile) {
+		this.hornitzaile = hornitzaile;
 	}
 	
 	public LocalDate getData() {

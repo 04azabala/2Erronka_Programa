@@ -104,6 +104,139 @@ public class DAO {
         return bezeroZerrenda;
     }
     
+    public bezeroak getBezeroa(int id) {
+        bezeroak b = null;  // Declarar fuera para poder retornarlo
+
+        try {
+            Connection con = konexioa.konektatu();
+            String sql = "SELECT * FROM bezeroak WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {  // Solo un registro
+                b = new bezeroak(
+                    rs.getInt("id"),
+                    rs.getString("NAN"),
+                    rs.getString("izena"),
+                    rs.getString("abizena"),
+                    rs.getString("email"),
+                    rs.getString("pasahitza")
+                );
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return b;
+    }
+    
+    public hornitzaileak getHornitzailea(int id) {
+        hornitzaileak h = null;  // Declarar fuera para poder retornarlo
+
+        try {
+            Connection con = konexioa.konektatu();
+            String sql = "SELECT * FROM hornitzaileak WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {  // Solo un registro
+                h = new hornitzaileak(
+                    rs.getInt("id"),
+                    rs.getString("izena"),
+                    rs.getString("kontaktu_izena"),
+                    rs.getString("email"),
+                    rs.getString("pasahitza"),
+                    rs.getString("helbidea"),
+                    rs.getString("telefonoa")
+                );
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return h;
+    }
+
+    
+    public produktuak getProduktua(int id) {
+        produktuak p = null;  // Declarar fuera para poder retornarlo
+
+        try {
+            Connection con = konexioa.konektatu();
+            String sql = "SELECT * FROM produktuak WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {  // Solo un registro
+                p = new produktuak(
+                    rs.getInt("id"),
+                    rs.getString("izena"),
+                    rs.getDouble("prezioa"),
+                    rs.getInt("stock"),
+                    rs.getString("egoera"),
+                    rs.getString("konponketa"),
+                    rs.getString("mota")
+                );
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return p;
+    }
+    
+    public saskia getSaski(int id) {
+        saskia s = null;  // Declarar fuera para poder retornarlo
+
+        try {
+            Connection con = konexioa.konektatu();
+            String sql = "SELECT * FROM erosketa WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {  // Solo un registro
+                s = new saskia(
+                    rs.getInt("id"),
+                    new bezeroak(rs.getInt("id_bezeroa")),
+                    new hornitzaileak(rs.getInt("id_hornitzailea")),
+                    new produktuak(rs.getInt("id_produktua")),
+                    rs.getDouble("totala"),
+                    rs.getDate("data").toLocalDate(),
+                    rs.getInt("zenbatekoa")
+                );
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return s;
+    }
+    
+    
     public ArrayList<fakturak> getFakturak() {
         ArrayList<fakturak> fakturaZerrenda = new ArrayList<>();
 
@@ -117,8 +250,13 @@ public class DAO {
                 fakturak f = new fakturak(
                     rs.getInt("id"),
                     new bezeroak(rs.getInt("id_bezeroa")),
+                    new hornitzaileak(rs.getInt("id_hornitzailea")),
+                    new produktuak(rs.getInt("id_produktua")),
+                    new saskia(rs.getInt("id_saskia")),
                     rs.getDate("data").toLocalDate(),
-                    rs.getDouble("totala")
+                    rs.getDouble("totala"),
+                    rs.getInt("zenbatekoa"),
+                    rs.getString("faktura_ruta")
                 );
                 fakturaZerrenda.add(f);
             }
@@ -150,6 +288,7 @@ public class DAO {
                     rs.getInt("id"),
                     rs.getString("izena"),
                     rs.getString("kontaktu_izena"),
+                    rs.getString("pasahitza"),
                     rs.getString("email"),
                     rs.getString("helbidea"),
                     rs.getString("telefonoa")
@@ -255,7 +394,6 @@ public class DAO {
                     new bezeroak(rs.getInt("id_bezeroa")),
                     new hornitzaileak(rs.getInt("id_hornitzailea")),
                     new produktuak(rs.getInt("id_produktua")),
-                    new fakturak(rs.getInt("id_faktura")),
                     rs.getDouble("totala"),
                     rs.getDate("data").toLocalDate(),
                     rs.getInt("zenbatekoa")
@@ -317,4 +455,43 @@ public class DAO {
 
         return FormularioZerrenda;
     }
+    
+    public fakturak getFacturaPorId(int id) {
+        fakturak f = null;
+        try (Connection con = konexioa.konektatu()) {
+            String sql = "SELECT * FROM fakturak WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+
+            if (rs.next()) {
+            	
+            	
+            	
+            	bezeroak b = getBezeroa(rs.getInt("id_bezeroa"));
+                hornitzaileak h = getHornitzailea(rs.getInt("id_hornitzailea"));
+                produktuak p = getProduktua(rs.getInt("id_produktua"));
+                saskia s = getSaski(rs.getInt("id_saskia"));
+                
+                
+            	f = new fakturak(
+                    rs.getInt("id"),
+                    b,
+                    h,
+                    p,
+                    s,
+                    rs.getDate("data").toLocalDate(),
+                    rs.getDouble("totala"),
+                    rs.getInt("zenbatekoa"),
+                    rs.getString("faktura_ruta")
+                );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return f;
+    }
+
 }
