@@ -1,11 +1,11 @@
 package erronka2;
-
+ 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+ 
 public class konexioa {
-
+ 
 	private static final String CONTROLADOREA="com.mysql.cj.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://192.168.115.171/erronka_2taldea";
 	private static final String ERABILTZAILEA="erabiltzaile";
