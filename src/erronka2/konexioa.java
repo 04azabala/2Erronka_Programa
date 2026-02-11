@@ -1,15 +1,15 @@
 package erronka2;
-
+ 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+ 
 public class konexioa {
-
+ 
 	private static final String CONTROLADOREA="com.mysql.cj.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/erronka_2taldea";
-	private static final String ERABILTZAILEA="root";
-	private static final String PASAHITZA="1MG32025";
+	private static final String URL = "jdbc:mysql://192.168.115.171/erronka_2taldea";
+	private static final String ERABILTZAILEA="erabiltzaile";
+	private static final String PASAHITZA="2TALDEA";
 	
 	static {
 		try {
