@@ -49,9 +49,9 @@ public class fakturaPDF {
             
             if (subirArchivoFTP(tempFile, nombreArchivo)) {
                 actualizarRutaEnDB(id, "fakturak/" + nombreArchivo);
-                System.out.println("ONDO! Bidalia XAMPPera.");
+                System.out.println("ONDO! Bidalia zerbitzarira.");
             } else {
-                System.err.println("ERROREA: Ezin izan da igo.");
+                System.err.println("ERROREA: Ezin izan da zerbitzarira igo.");
             }
 
         } catch (IOException e) {
@@ -66,7 +66,7 @@ public class fakturaPDF {
         ftpClient.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out), true));
 
         try {
-            ftpClient.connect("192.168.115.171", 21);
+            ftpClient.connect("192.168.115.171", 21); 
             
             if (!FTPReply.isPositiveCompletion(ftpClient.getReplyCode())) {
                 ftpClient.disconnect();
@@ -80,7 +80,7 @@ public class fakturaPDF {
             ftpClient.setControlKeepAliveTimeout(300);
 
             try (FileInputStream inputStream = new FileInputStream(archivo)) {
-                return ftpClient.storeFile("/" + nombreRemoto, inputStream);
+                return ftpClient.storeFile(nombreRemoto, inputStream);
             }
 
         } catch (IOException ex) {
